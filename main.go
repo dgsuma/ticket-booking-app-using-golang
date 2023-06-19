@@ -80,7 +80,7 @@ func main() {
 		}
 	}
 
-	
+	/*
 	// switch statement example
 	city := "London"
 
@@ -96,5 +96,5 @@ func main() {
 		default:
 			fmt.Print("No valid city selected")
 	}
-	
+	*/
 }
