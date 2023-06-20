@@ -11,6 +11,8 @@ func main() {
 	var remainingTickets uint = 50
 	bookings := []string{}  // slice is dynamic in length, despite array is fixed in length
 
+	greetUsers()	
+
 	// fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName)
 
 	fmt.Printf("Welcome to %v booking application\n", conferenceName)
@@ -97,4 +99,8 @@ func main() {
 			fmt.Print("No valid city selected")
 	}
 	*/
+}
+
+func greetUsers() {
+	fmt.Println("Welcome to our confrerence")
 }
