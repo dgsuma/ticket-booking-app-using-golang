@@ -21,20 +21,8 @@ func main() {
 		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets, remainingTickets) // function call
 
 		if isValidName && isValidEmail && isValidTicketNumber {
-			remainingTickets = remainingTickets - userTickets
-			// bookings[0] = firstName + " " + lastName  // array assignment
-			bookings = append(bookings, firstName + " " + lastName) // slice assignment
 
-			// fmt.Printf("The whole slice: %v\n", bookings)
-			// fmt.Printf("The first value: %v\n", bookings[0])
-			// fmt.Printf("Slice type: %T\n", bookings)
-			// fmt.Printf("Slice length: %v\n", len(bookings))
-
-			// fmt.Println(remainingTickets)
-			// fmt.Println(&remainingTickets)
-
-			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
-			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+			bookTicket(remainingTickets, userTickets, bookings, firstName, lastName, email, conferenceName) // function call
 
 			firstNames := getFirstNames(bookings)  // function call
 			fmt.Printf("The first names of bookings are: %v\n", firstNames)
@@ -117,4 +105,22 @@ func getUserInput() (string, string, string, uint){
 	fmt.Scan(&userTickets)
 
 	return firstName, lastName, email, userTickets
+}
+
+func bookTicket(remainingTickets uint, userTickets uint, bookings []string, firstName string, lastName string, email string, conferenceName string) {
+	remainingTickets = remainingTickets - userTickets
+	// bookings[0] = firstName + " " + lastName  // array assignment
+
+	bookings = append(bookings, firstName + " " + lastName) // slice assignment
+
+	// fmt.Printf("The whole slice: %v\n", bookings)
+	// fmt.Printf("The first value: %v\n", bookings[0])
+	// fmt.Printf("Slice type: %T\n", bookings)
+	// fmt.Printf("Slice length: %v\n", len(bookings))
+
+	// fmt.Println(remainingTickets)
+	// fmt.Println(&remainingTickets)
+
+	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
+	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 }
