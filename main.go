@@ -11,7 +11,7 @@ func main() {
 	var remainingTickets uint = 50
 	bookings := []string{}  // slice is dynamic in length, despite array is fixed in length
 
-	greetUsers(conferenceName, conferenceTickets, remainingTickets)	
+	greetUsers(conferenceName, conferenceTickets, remainingTickets)	// function call
 
 	// fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName)
 	
@@ -54,11 +54,7 @@ func main() {
 			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 
-			firstNames := []string{} // slice declaration
-			for _, booking := range bookings { // _ is blank identifier (to ignore a variable you don't want to use)
-				var names = strings.Fields(booking)
-				firstNames = append(firstNames, names[0])
-			}
+			firstNames := getFirstNames(bookings)  // function call
 			fmt.Printf("The first names of bookings are: %v\n", firstNames)
 
 			if remainingTickets == 0 { 
@@ -102,4 +98,13 @@ func greetUsers(confName string, confTickets int, remainingTickets uint) {
 	fmt.Printf("Welcome to %v booking application\n", confName)
 	fmt.Printf("We have total of %v tickets and %v are still available.\n", confTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend")
+}
+
+func getFirstNames(bookings []string) []string {
+	firstNames := []string{} // slice declaration
+	for _, booking := range bookings { // _ is blank identifier (to ignore a variable you don't want to use)
+		var names = strings.Fields(booking)
+		firstNames = append(firstNames, names[0])
+	}
+	return firstNames
 }
