@@ -17,23 +17,7 @@ func main() {
 	
 
 	for {
-		var firstName string
-		var lastName string
-		var email string
-		var userTickets uint
-		// ask user thier name
-		fmt.Println("Please enter your first name: ")
-		fmt.Scan(&firstName)
-
-		fmt.Println("Please enter your last name: ")
-		fmt.Scan(&lastName)
-
-		fmt.Println("Please enter your email address: ")
-		fmt.Scan(&email)
-
-		fmt.Println("Please enter number of tickets: ")
-		fmt.Scan(&userTickets)
-
+		firstName, lastName, email, userTickets := getUserInput()
 		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets, remainingTickets) // function call
 
 		if isValidName && isValidEmail && isValidTicketNumber {
@@ -112,4 +96,25 @@ func validateUserInput(firstName string, lastName string, email string, userTick
 	isValidEmail := strings.Contains(email, "@")
 	isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
 	return isValidName, isValidEmail, isValidTicketNumber // A Go function can return multiple values, here we return 3 bool values
+}
+
+func getUserInput() (string, string, string, uint){
+	var firstName string
+	var lastName string
+	var email string
+	var userTickets uint
+	
+	fmt.Println("Please enter your first name: ")
+	fmt.Scan(&firstName)
+
+	fmt.Println("Please enter your last name: ")
+	fmt.Scan(&lastName)
+
+	fmt.Println("Please enter your email address: ")
+	fmt.Scan(&email)
+
+	fmt.Println("Please enter number of tickets: ")
+	fmt.Scan(&userTickets)
+
+	return firstName, lastName, email, userTickets
 }
